@@ -9,6 +9,7 @@ let gridWidth = Math.sqrt(gridSize);
 for (i = 1; i <= gridSize; i++) {
     const box = document.createElement("div");
     box.setAttribute("id", "box" + i);
+    box.setAttribute("onmouseover", "changeColor(this)")
     grid.appendChild(box);
     box.style.cssText = `height: calc(100%/${gridHeight}); width: calc(100%/${gridWidth});`;
 }
@@ -20,6 +21,11 @@ grid.style.cssText = "height: 500px; width: 500px; display: flex; flex-wrap: wra
 document.body.style.cssText = "display: flex; justify-content: center;";
 
 // Add hovering effect that changes color of boxes
+let color = "black"
+
+function changeColor(ele) {
+    ele.style.backgroundColor = color;
+}
 
 // Add button with popup
 // Ask how large user wants the grid (max 100)
