@@ -29,15 +29,25 @@ function changeColor(ele) {
     ele.style.backgroundColor = color;
 }
 
-// Add button with popup
+// Make divs containers for gridChanges and colorGrid
 const options = document.createElement("div");
 options.setAttribute("id", "options");
 document.body.insertBefore(options, grid);
 
+const colorChanges = document.createElement("div");
+colorChanges.setAttribute("id", "colorChanges");
+options.appendChild(colorChanges);
+
+const gridChanges = document.createElement("div");
+gridChanges.setAttribute("id", "gridChanges");
+options.appendChild(gridChanges);
+
+
+// Add button with popup
 const buttonNewSize = document.createElement("button");
 buttonNewSize.setAttribute("id", "newSizeButton");
 buttonNewSize.textContent = "Resize Grid";
-options.appendChild(buttonNewSize);
+gridChanges.appendChild(buttonNewSize);
 
 // Ask how large user wants the grid (max 100)
 buttonNewSize.addEventListener("click", () => {
@@ -52,8 +62,6 @@ buttonNewSize.addEventListener("click", () => {
         alert("Invalid, Try again");
     }
 });
-
-
 
 // Replace current grid with new grid (space taken up should remain the same)
 function removeGrid() {
@@ -72,7 +80,7 @@ function removeGrid() {
 const buttonClear = document.createElement("button");
 buttonClear.setAttribute("id", "clearButton");
 buttonClear.textContent = "Clear";
-options.appendChild(buttonClear);
+gridChanges.appendChild(buttonClear);
 
 buttonClear.addEventListener("click", () => {
     removeGrid();
