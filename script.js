@@ -35,7 +35,7 @@ options.setAttribute("id", "options");
 document.body.insertBefore(options, grid);
 
 const buttonNewSize = document.createElement("button");
-buttonNewSize.setAttribute("id", "button");
+buttonNewSize.setAttribute("id", "newSizeButton");
 buttonNewSize.textContent = "Resize Grid";
 options.appendChild(buttonNewSize);
 
@@ -69,3 +69,12 @@ function removeGrid() {
 // Eraser (changes back to white)
 
 // Create clear button
+const buttonClear = document.createElement("button");
+buttonClear.setAttribute("id", "clearButton");
+buttonClear.textContent = "Clear";
+options.appendChild(buttonClear);
+
+buttonClear.addEventListener("click", () => {
+    removeGrid();
+    makeGrid(gridSize);
+});
