@@ -1,18 +1,23 @@
 // Create a grid of square divs
 const grid = document.querySelector("#grid");
 
-let gridSize = 16;
+let sideSize = 16;
+let gridSize = sideSize * sideSize;
 
 let gridHeight = Math.sqrt(gridSize);
 let gridWidth = Math.sqrt(gridSize);
 
-for (i = 1; i <= gridSize; i++) {
+function makeGrid(gridSize) {
+    for (i = 1; i <= gridSize; i++) {
     const box = document.createElement("div");
     box.setAttribute("id", "box" + i);
     box.setAttribute("onmouseover", "changeColor(this)")
     grid.appendChild(box);
     box.style.cssText = `height: calc(100%/${gridHeight}); width: calc(100%/${gridWidth});`;
+    }
 }
+makeGrid(gridSize);
+
 
 // Apply css properties 
 grid.style.cssText = "height: 500px; width: 500px; display: flex; flex-wrap: wrap;"
@@ -38,6 +43,15 @@ buttonNewSize.textContent = "Resize Grid";
 options.appendChild(buttonNewSize);
 
 // Ask how large user wants the grid (max 100)
+buttonNewSize.addEventListener("click", () => {
+    let newSize = prompt("How many boxes per side? (Max: 100)", "16")
+    if (newSize >= 1 && newSize <= 100) {
+        sideSize = newSize;
+    } else {
+        alert("Invalid, Try again")
+    }
+});
+
 // Replace current grid with new grid (space taken up should remain the same)
 
 // Create color options
