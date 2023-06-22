@@ -2,10 +2,7 @@
 const grid = document.querySelector("#grid");
 
 let sideSize = 16;
-let gridSize = sideSize * sideSize;
-
-let gridHeight = Math.sqrt(gridSize);
-let gridWidth = Math.sqrt(gridSize);
+let gridSize = 256;
 
 function makeGrid(gridSize) {
     for (i = 1; i <= gridSize; i++) {
@@ -13,7 +10,7 @@ function makeGrid(gridSize) {
     box.setAttribute("id", "box" + i);
     box.setAttribute("onmouseover", "changeColor(this)")
     grid.appendChild(box);
-    box.style.cssText = `height: calc(100%/${gridHeight}); width: calc(100%/${gridWidth});`;
+    box.style.cssText = `height: calc(100%/${sideSize}); width: calc(100%/${sideSize});`;
     }
 }
 makeGrid(gridSize);
@@ -47,12 +44,23 @@ buttonNewSize.addEventListener("click", () => {
     let newSize = prompt("How many boxes per side? (Max: 100)", "16")
     if (newSize >= 1 && newSize <= 100) {
         sideSize = newSize;
+        gridSize = sideSize * sideSize;
+        console.log(sideSize, gridSize)
+        removeGrid();
+        makeGrid(gridSize);
     } else {
-        alert("Invalid, Try again")
+        alert("Invalid, Try again");
     }
 });
 
+
+
 // Replace current grid with new grid (space taken up should remain the same)
+function removeGrid() {
+    while (grid.lastElementChild) {
+        grid.removeChild(grid.lastElementChild);
+    }
+}
 
 // Create color options
 // Randomized colors
