@@ -78,6 +78,7 @@ colorChanges.appendChild(inputPickColor);
 inputPickColor.addEventListener("change",() => {
     let chosenColor = inputPickColor.value;
     color = chosenColor;
+    onmouseout = null;
 });
 
 // Randomized colors
@@ -85,6 +86,20 @@ const randomizeColor = document.createElement("button");
 randomizeColor.setAttribute("id", "randomizeColor");
 randomizeColor.textContent = "Randomize";
 colorChanges.appendChild(randomizeColor);
+
+function randomRGBColor() {
+    let rValue = Math.floor(Math.random()*(255 + 1));
+    let gValue = Math.floor(Math.random()*(255 + 1));
+    let bValue = Math.floor(Math.random()*(255 + 1));
+    let randomizedRGB = `rgb(${rValue},${gValue},${bValue})`;
+    color = randomizedRGB;
+}
+
+randomizeColor.addEventListener("click", () => {
+    onmouseout = () => {
+        randomRGBColor();
+    }
+});
 
 // Progressively darken (10% darker per mouse over)
 
@@ -95,7 +110,8 @@ eraser.textContent = "Eraser";
 colorChanges.appendChild(eraser);
 
 eraser.addEventListener("click", () => {
-    color = "white"
+    color = "white";
+    onmouseout = null;
 });
 
 // Create clear button
