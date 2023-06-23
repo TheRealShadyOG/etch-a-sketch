@@ -71,6 +71,16 @@ function removeGrid() {
 }
 
 // Create color options
+const inputPickColor = document.createElement("input");
+inputPickColor.setAttribute("id", "inputPickColor");
+inputPickColor.setAttribute("type", "color");
+colorChanges.appendChild(inputPickColor);
+
+inputPickColor.addEventListener("change",() => {
+    let chosenColor = inputPickColor.value;
+    color = chosenColor;
+});
+
 // Randomized colors
 // User color choice
 // Progressively darken (10% darker per mouse over)
