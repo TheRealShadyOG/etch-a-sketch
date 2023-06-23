@@ -55,7 +55,6 @@ buttonNewSize.addEventListener("click", () => {
     if (newSize >= 1 && newSize <= 100) {
         sideSize = newSize;
         gridSize = sideSize * sideSize;
-        console.log(sideSize, gridSize)
         removeGrid();
         makeGrid(gridSize);
     } else {
@@ -70,7 +69,7 @@ function removeGrid() {
     }
 }
 
-// Create color options
+// User color choice
 const inputPickColor = document.createElement("input");
 inputPickColor.setAttribute("id", "inputPickColor");
 inputPickColor.setAttribute("type", "color");
@@ -82,9 +81,18 @@ inputPickColor.addEventListener("change",() => {
 });
 
 // Randomized colors
-// User color choice
+
 // Progressively darken (10% darker per mouse over)
+
 // Eraser (changes back to white)
+const eraser = document.createElement("button");
+eraser.setAttribute("id", "eraser");
+eraser.textContent = "Eraser";
+colorChanges.appendChild(eraser);
+
+eraser.addEventListener("click", () => {
+    color = "white"
+});
 
 // Create clear button
 const buttonClear = document.createElement("button");
