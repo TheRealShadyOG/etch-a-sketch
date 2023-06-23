@@ -81,6 +81,10 @@ inputPickColor.addEventListener("change",() => {
 });
 
 // Randomized colors
+const randomColor = document.createElement("button");
+randomColor.setAttribute("id", "randomColor");
+randomColor.textContent = "Random";
+colorChanges.appendChild(randomColor);
 
 // Progressively darken (10% darker per mouse over)
 
