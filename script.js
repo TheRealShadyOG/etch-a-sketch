@@ -101,8 +101,6 @@ randomizeColor.addEventListener("click", () => {
     }
 });
 
-// Progressively darken (10% darker per mouse over)
-
 // Eraser (changes back to white)
 const eraser = document.createElement("button");
 eraser.setAttribute("id", "eraser");
@@ -124,3 +122,11 @@ buttonClear.addEventListener("click", () => {
     removeGrid();
     makeGrid(gridSize);
 });
+
+// Apply css to buttons
+options.style.cssText = "display: flex; flex-direction: column; align-items: center;" 
+                      + "width: 250;";
+
+colorChanges.style.cssText = "display: flex; gap: 10px";
+
+gridChanges.style.cssText = "display: flex; gap: 10px; margin: 10px;";
