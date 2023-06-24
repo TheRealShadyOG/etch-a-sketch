@@ -42,6 +42,11 @@ const gridChanges = document.createElement("div");
 gridChanges.setAttribute("id", "gridChanges");
 options.appendChild(gridChanges);
 
+// Make header
+const header = document.createElement("h1");
+header.setAttribute("id", "header");
+header.textContent = "Etch-A-Sketch";
+document.body.insertBefore(header, options);
 
 // Add button with popup
 const buttonNewSize = document.createElement("button");
